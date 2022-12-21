@@ -6,16 +6,21 @@
 
 package main
 
+import (
+	"di_sample/repo"
+	"di_sample/service"
+)
+
 // Injectors from wire.go:
 
-func InitializeUserService1() *UserService {
-	userRepository := NewUserRepo1()
-	userService := NewUserService(userRepository)
+func InitializeUserService1() *service.UserService {
+	iUserRepository := repo.NewUserRepo1()
+	userService := service.NewUserService(iUserRepository)
 	return userService
 }
 
-func InitializeUserService2() *UserService {
-	userRepository := NewUserRepo2()
-	userService := NewUserService(userRepository)
+func InitializeUserService2() *service.UserService {
+	iUserRepository := repo.NewUserRepo2()
+	userService := service.NewUserService(iUserRepository)
 	return userService
 }
