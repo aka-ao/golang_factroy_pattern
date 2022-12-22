@@ -18,3 +18,8 @@ func InitializeUserService2() *service.UserService {
 	wire.Build(service.NewUserService, repo.NewUserRepo2)
 	return nil
 }
+
+func InitializeUserServiceSingleton() *service.UserService {
+	wire.Build(service.NewUserServiceSingleton, repo.NewUserRepo1)
+	return nil
+}

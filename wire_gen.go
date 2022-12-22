@@ -24,3 +24,9 @@ func InitializeUserService2() *service.UserService {
 	userService := service.NewUserService(iUserRepository)
 	return userService
 }
+
+func InitializeUserServiceSingleton() *service.UserService {
+	iUserRepository := repo.NewUserRepo1()
+	userService := service.NewUserServiceSingleton(iUserRepository)
+	return userService
+}
