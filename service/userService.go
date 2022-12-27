@@ -12,12 +12,6 @@ type UserService struct {
 
 var instance *UserService
 
-func NewUserService(repo repo.IUserRepository) *UserService {
-	return &UserService{
-		repo: repo,
-	}
-}
-
 func NewUserServiceSingleton(repo repo.IUserRepository) *UserService {
 	if instance == nil {
 		log.Println("create new service instance")

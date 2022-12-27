@@ -1,0 +1,40 @@
+@startuml
+namespace domain {
+    class User << (S,Aquamarine) >> {
+        + Name string
+        + Email string
+
+    }
+}
+
+
+namespace repo {
+    interface IUserRepository  {
+        + All() ([]domain.User, error)
+
+    }
+    class userRepository1 << (S,Aquamarine) >> {
+        + All() ([]domain.User, error)
+
+    }
+    class userRepository2 << (S,Aquamarine) >> {
+        + All() ([]domain.User, error)
+
+    }
+}
+
+"repo.IUserRepository" <|-- "repo.userRepository1"
+"repo.IUserRepository" <|-- "repo.userRepository2"
+
+namespace service {
+    class UserService << (S,Aquamarine) >> {
+        - repo repo.IUserRepository
+
+        + All() ([]domain.User, error)
+
+    }
+}
+
+"repo.IUserRepository" <|-- "service.UserService"
+
+@enduml

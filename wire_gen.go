@@ -13,20 +13,8 @@ import (
 
 // Injectors from wire.go:
 
-func InitializeUserService1() *service.UserService {
-	iUserRepository := repo.NewUserRepo1()
-	userService := service.NewUserService(iUserRepository)
-	return userService
-}
-
-func InitializeUserService2() *service.UserService {
-	iUserRepository := repo.NewUserRepo2()
-	userService := service.NewUserService(iUserRepository)
-	return userService
-}
-
-func InitializeUserServiceSingleton() *service.UserService {
-	iUserRepository := repo.NewUserRepo1()
+func InitializeUserService() *service.UserService {
+	iUserRepository := repo.NewUserRepo()
 	userService := service.NewUserServiceSingleton(iUserRepository)
 	return userService
 }

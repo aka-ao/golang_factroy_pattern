@@ -1,6 +1,5 @@
 package domain
 
-type User struct {
-	Name  string
-	Email string
+type User interface {
+	Pay(amount int) string
 }
