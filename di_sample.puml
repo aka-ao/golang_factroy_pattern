@@ -1,8 +1,33 @@
 @startuml
 namespace domain {
-    class User << (S,Aquamarine) >> {
-        + Name string
-        + Email string
+    class NormalUser << (S,Aquamarine) >> {
+        + UserId int
+        + UserName string
+
+        + Pay(amount int) string
+
+    }
+    class PrimeUser << (S,Aquamarine) >> {
+        + UserId int
+        + UserName string
+
+        + Pay(amount int) string
+
+    }
+    interface User  {
+        + Pay(amount int) string
+
+    }
+}
+
+"domain.User" <|-- "domain.NormalUser"
+"domain.User" <|-- "domain.PrimeUser"
+
+namespace dto {
+    class UserDTO << (S,Aquamarine) >> {
+        + UserID int
+        + UserName string
+        + Status int
 
     }
 }
@@ -13,18 +38,13 @@ namespace repo {
         + All() ([]domain.User, error)
 
     }
-    class userRepository1 << (S,Aquamarine) >> {
-        + All() ([]domain.User, error)
-
-    }
-    class userRepository2 << (S,Aquamarine) >> {
+    class UserRepositoryImpl << (S,Aquamarine) >> {
         + All() ([]domain.User, error)
 
     }
 }
 
-"repo.IUserRepository" <|-- "repo.userRepository1"
-"repo.IUserRepository" <|-- "repo.userRepository2"
+"repo.IUserRepository" <|-- "repo.UserRepositoryImpl"
 
 namespace service {
     class UserService << (S,Aquamarine) >> {

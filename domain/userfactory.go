@@ -13,9 +13,9 @@ const (
 func GetUser(userId int, userName string, status int) (User, error) {
 	switch status {
 	case Normal:
-		return &NormalUser{Name: userName, Id: userId}, nil
+		return &NormalUser{UserName: userName, UserId: userId}, nil
 	case Prime:
-		return &PrimeUser{Name: userName, Id: userId}, nil
+		return &PrimeUser{UserName: userName, UserId: userId}, nil
 	default:
 		errMsg := fmt.Sprintf("user factory error: status %v", status)
 		return nil, errors.New(errMsg)
