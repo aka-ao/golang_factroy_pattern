@@ -7,12 +7,12 @@ import (
 )
 
 type UserService struct {
-	repo repo.IUserRepository
+	repo repo.UserRepository
 }
 
 var instance *UserService
 
-func NewUserServiceSingleton(repo repo.IUserRepository) *UserService {
+func NewUserServiceSingleton(repo repo.UserRepository) *UserService {
 	if instance == nil {
 		log.Println("create new service instance")
 		instance = &UserService{
