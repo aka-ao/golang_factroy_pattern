@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	userService := InitializeUserService()
+	userService := initializeUserService()
 	users, _ := userService.All()
 	for _, user := range users {
 		log.Println(user.Pay(1000))
